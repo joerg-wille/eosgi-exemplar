@@ -14,6 +14,11 @@
   <dependencies>
     <!-- WORKSPACE DEPENDENCIES -->
     <!-- TODO: reference your workspace projects to be indexed -->
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>org.example.provider</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 
     <!-- THIRD PARTY DEPENDENCIES -->
     <dependency>

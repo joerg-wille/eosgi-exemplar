@@ -30,6 +30,7 @@
           <failOnChanges>true</failOnChanges>
           <bndruns>
             <bndrun>shell.bndrun</bndrun>
+            <bndrun>provider.bndrun</bndrun>
           </bndruns>
         </configuration>
         <executions>

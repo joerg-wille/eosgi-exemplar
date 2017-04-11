@@ -1,0 +1,20 @@
+-standalone: ../_index/target/index.xml; name=indexed
+
+-runfw: org.apache.felix.framework
+-runee: JavaSE-1.8
+-resolve.effective: active; skip:="osgi.service"
+
+-runrequires: \
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.configadmin)',\
+	osgi.identity;filter:='(osgi.identity=org.example.provider)'
+
+-runbundles: \
+        org.apache.felix.bundlerepository;version='[2.0.8,2.0.9)',\
+        org.apache.felix.configadmin;version='[1.8.12,1.8.13)',\
+        org.apache.felix.gogo.command;version='[1.0.0,1.0.1)',\
+        org.apache.felix.gogo.runtime;version='[1.0.0,1.0.1)',\
+        org.apache.felix.gogo.shell;version='[1.0.0,1.0.1)',\
+        org.apache.felix.scr;version='[2.0.8,2.0.9)',\
+        org.example.provider;version='[1.0.0,1.0.1)'
