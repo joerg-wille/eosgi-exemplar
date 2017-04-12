@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.effectiveosgi.example</groupId>
+        <artifactId>example-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>test-parent</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>org.example.provider.test</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.servicemix.bundles</groupId>
+                <artifactId>org.apache.servicemix.bundles.junit</artifactId>
+                <version>4.12_1</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>biz.aQute.bnd</groupId>
+                    <artifactId>bnd-maven-plugin</artifactId>
+                    <configuration>
+                        <bnd><![CDATA[
+Test-Cases: ${classes;NAMED;*Test}
+]]>
+                        </bnd>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>biz.aQute.bnd</groupId>
+                    <artifactId>bnd-indexer-maven-plugin</artifactId>
+                    <configuration>
+                        <includeJar>true</includeJar>
+                        <localURLs>${local.index.policy}</localURLs>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>pre-integration-test</phase>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>biz.aQute.bnd</groupId>
+                    <artifactId>bnd-testing-maven-plugin</artifactId>
+                    <version>3.4.0-SNAPSHOT</version>
+                    <configuration>
+                        <resolve>true</resolve>
+                        <failOnChanges>true</failOnChanges>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>testing</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

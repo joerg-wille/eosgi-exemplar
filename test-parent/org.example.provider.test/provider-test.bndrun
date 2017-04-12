@@ -1,0 +1,17 @@
+-standalone: target/index.xml
+
+-runfw: org.apache.felix.framework
+-runee: JavaSE-1.8
+-resolve.effective: active; skip:='osgi.service'
+
+-runrequires: \
+    osgi.identity;filter:='(osgi.identity=org.example.provider.test)',\
+    osgi.identity;filter:='(osgi.identity=org.example.provider)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.configadmin)'
+
+-runbundles: \
+        org.apache.felix.configadmin;version='[1.8.12,1.8.13)',\
+        org.apache.felix.scr;version='[2.0.8,2.0.9)',\
+        org.apache.servicemix.bundles.junit;version='[4.12.0,4.12.1)',\
+        org.example.provider;version='[1.0.0,1.0.1)',\
+        org.example.provider.test;version='[1.0.0,1.0.1)'

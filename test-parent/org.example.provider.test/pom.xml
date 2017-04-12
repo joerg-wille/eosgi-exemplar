@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.effectiveosgi.example</groupId>
+        <artifactId>test-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>org.example.provider.test</artifactId>
+
+    <dependencies>
+        <!-- Library compile dependencies -->
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>osgi.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.junit</artifactId>
+        </dependency>
+
+        <!-- Project dependencies -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>org.example.provider</artifactId>
+            <version>${version}</version>
+        </dependency>
+
+        <!-- Runtime dependencies -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>_index</artifactId>
+            <version>${version}</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>biz.aQute.bnd</groupId>
+                <artifactId>bnd-indexer-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>biz.aQute.bnd</groupId>
+                <artifactId>bnd-testing-maven-plugin</artifactId>
+                <configuration>
+                    <bndruns>
+                        <bndrun>provider-test.bndrun</bndrun>
+                    </bndruns>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
