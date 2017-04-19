@@ -33,40 +33,9 @@
                     <configuration>
                         <bnd><![CDATA[
 Test-Cases: ${classes;NAMED;*Test}
-]]>
+                        ]]>
                         </bnd>
                     </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>biz.aQute.bnd</groupId>
-                    <artifactId>bnd-indexer-maven-plugin</artifactId>
-                    <configuration>
-                        <includeJar>true</includeJar>
-                        <localURLs>${local.index.policy}</localURLs>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>pre-integration-test</phase>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
-                    <groupId>biz.aQute.bnd</groupId>
-                    <artifactId>bnd-testing-maven-plugin</artifactId>
-                    <version>3.4.0-SNAPSHOT</version>
-                    <configuration>
-                        <resolve>true</resolve>
-                        <failOnChanges>true</failOnChanges>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>testing</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
